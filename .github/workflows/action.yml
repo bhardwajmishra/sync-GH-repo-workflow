@@ -1,45 +1,31 @@
-name: Sync Code to test1 Repo via SSH
+name: Sync Repositories
 
 on:
   push:
     branches:
-      - main  # Adjust branch name as needed
+      - main # Replace with the branch you want to sync
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout Source Repository
+      uses: actions/checkout@v3
 
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+    - name: Setup SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-      - name: Configure Git Author
-        run: |
-          rm -rf .git
-          git init
-          pwd
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+    - name: Add Destination Repository as Remote
+      run: |
+        git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
+        git fetch destination
 
-      - name: Add test1 repo as remote
-        run: git remote add origin git@github.com:nileshA-addweb/bhardwaj-testing.git
-
-      - name: Add and commit changes
-        run: |
-          git fetch --all
-          git checkout main
-          git add .
-          git commit -m "Sync changes from bhardwajmishra repo - $(date)"
-
-      - name: Push code to test1
-        run: |
-          git remote -v
-          git push -f main  # Adjust branches if necessary
+    - name: Push Changes to Destination Repository
+      run: |
+        git push destination main --force
 
