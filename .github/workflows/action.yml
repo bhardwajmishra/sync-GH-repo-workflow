@@ -1,0 +1,34 @@
+name: Sync Code to test1 Repo via SSH
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Add test1 repo as remote
+        run: git remote add addweb-bhardwaj-testing git@github.com:nileshA-addweb/bhardwaj-testing.git
+
+      - name: Add and commit changes
+        run: |
+          git add .
+          git commit -m "Sync changes from bhardwajmishra repo - $(date)"
+
+      - name: Push code to test1
+        run: |
+          git push --force addweb-bhardwaj-testing main:main  # Adjust branches if necessary
+
