@@ -38,5 +38,6 @@ jobs:
 
       - name: Push code to test1
         run: |
+          git remote -v
           git push -f main  # Adjust branches if necessary
 
