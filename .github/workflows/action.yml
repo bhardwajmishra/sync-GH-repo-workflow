@@ -25,7 +25,20 @@ jobs:
         git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
         git fetch destination
 
+    - name: Verify Repository State
+      run: |
+        git fsck --full
+        git gc --prune=now --aggressive
+
+    - name: Enable Verbose Logging
+      run: |
+        export GIT_TRACE=1
+        export GIT_CURL_VERBOSE=1
+
     - name: Push Changes to Destination Repository
       run: |
         git push destination main --force
+      env:
+        GIT_TRACE: 1
+        GIT_CURL_VERBOSE: 1
 
