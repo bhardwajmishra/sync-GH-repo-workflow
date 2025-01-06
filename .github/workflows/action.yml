@@ -28,7 +28,7 @@ jobs:
           git config user.email "actions@github.com"
 
       - name: Add test1 repo as remote
-        run: git remote add addweb-bhardwaj-testing git@github.com:nileshA-addweb/bhardwaj-testing.git
+        run: git remote add git@github.com:nileshA-addweb/bhardwaj-testing.git
 
       - name: Add and commit changes
         run: |
