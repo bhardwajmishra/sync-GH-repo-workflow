@@ -20,7 +20,7 @@ jobs:
         chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-    - name: Verify and Clean Repository
+    - name: Clean Up Repository
       run: |
         git fsck --full
         git gc --prune=now --aggressive
@@ -29,7 +29,8 @@ jobs:
       run: |
         git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
 
-    - name: Push Changes to a New Branch
+    - name: Fetch Shallow History and Push
       run: |
-        git push --force destination HEAD:new-main
+        git fetch origin main --depth=1
+        git push --force destination main
 
