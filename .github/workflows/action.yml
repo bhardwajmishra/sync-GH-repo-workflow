@@ -24,16 +24,17 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"          
+          rm -rf .git
 
       - name: Add test1 repo as remote
         run: git remote add addweb-bhardwaj-testing git@github.com:nileshA-addweb/bhardwaj-testing.git
 
-          #      - name: Add and commit changes
-          # run: |
-          # git add .
-          #          git commit -m "Sync changes from bhardwajmishra repo - $(date)"
+      - name: Add and commit changes
+        run: |
+          git add .
+          git commit -m "Sync changes from bhardwajmishra repo - $(date)"
 
       - name: Push code to test1
         run: |
-          git push --force addweb-bhardwaj-testing main:main  # Adjust branches if necessary
+          git push origin main  # Adjust branches if necessary
 
