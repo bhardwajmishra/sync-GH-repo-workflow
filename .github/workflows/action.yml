@@ -20,6 +20,11 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
+      - name: Configure Git Author
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"          
+
       - name: Add test1 repo as remote
         run: git remote add addweb-bhardwaj-testing git@github.com:nileshA-addweb/bhardwaj-testing.git
 
