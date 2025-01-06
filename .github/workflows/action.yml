@@ -20,17 +20,16 @@ jobs:
         chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-    - name: Verify and Clean Repository
-      run: |
-        git fsck --full
-        git gc --prune=now --aggressive
-
     - name: Add Destination Repository as Remote
       run: |
         git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
-        git fetch destination || true
 
-    - name: Push Latest State (Shallow Push)
+    - name: Fetch Shallow History
       run: |
-        git push --force --depth=1 destination main
+        git fetch origin main --depth=1
+        git checkout main
+
+    - name: Push Latest State to Destination
+      run: |
+        git push --force destination main
 
