@@ -38,5 +38,5 @@ jobs:
 
       - name: Push code to test1
         run: |
-          git push origin main  # Adjust branches if necessary
+          git push -f main  # Adjust branches if necessary
 
