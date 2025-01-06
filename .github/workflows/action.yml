@@ -32,5 +32,5 @@ jobs:
     - name: Fetch Shallow History and Push
       run: |
         git fetch origin main --depth=1
-        git push --force destination main1
+        git push --force destination main
 
