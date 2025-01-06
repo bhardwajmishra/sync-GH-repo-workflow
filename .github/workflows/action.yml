@@ -32,6 +32,7 @@ jobs:
 
       - name: Add and commit changes
         run: |
+          git fetch --all
           git add .
           git commit -m "Sync changes from bhardwajmishra repo - $(date)"
 
