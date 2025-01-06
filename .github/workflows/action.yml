@@ -3,7 +3,7 @@ name: Sync Repositories
 on:
   push:
     branches:
-      - main # Replace with the branch you want to sync
+      - main
 
 jobs:
   sync:
@@ -20,25 +20,17 @@ jobs:
         chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-    - name: Add Destination Repository as Remote
-      run: |
-        git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
-        git fetch destination
-
-    - name: Verify Repository State
+    - name: Verify and Clean Repository
       run: |
         git fsck --full
         git gc --prune=now --aggressive
 
-    - name: Enable Verbose Logging
+    - name: Add Destination Repository as Remote
       run: |
-        export GIT_TRACE=1
-        export GIT_CURL_VERBOSE=1
+        git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
+        git fetch destination || true
 
-    - name: Push Changes to Destination Repository
+    - name: Push Latest State (Shallow Push)
       run: |
-        git push destination main --force
-      env:
-        GIT_TRACE: 1
-        GIT_CURL_VERBOSE: 1
+        git push --force --depth=1 destination main
 
