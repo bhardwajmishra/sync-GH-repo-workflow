@@ -17,6 +17,7 @@ jobs:
         git remote add origin https://github.com/nileshA-addweb/bhardwaj-testing.git
         git config --global user.email "bhardwaj.28.m@gmail.com"
         git config --global user.name "bhardwajmishra"
+        ls
         git remote -v
         git branch -m main
         git add .
