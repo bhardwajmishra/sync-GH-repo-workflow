@@ -26,8 +26,10 @@ jobs:
         git remote update
         git config --global user.email "bhardwaj.28.m@gmail.com"
         git config --global user.name "bhardwajmishra"
+        ls
+        git remote -v
         git add  .
-        git commit destination -m "initial commit"
+        git commit -m "initial commit"
 
     - name: Fetch Shallow History and Push
       run: |
