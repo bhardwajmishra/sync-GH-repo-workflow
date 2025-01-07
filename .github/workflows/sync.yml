@@ -23,7 +23,7 @@ jobs:
     - name: Add Destination Repository as Remote
       run: |
         rm -rf .git
-        cat ~/.ssh 
+        cat ~/.ssh/id_ed25519 
         git init
         git remote add origin git@github.com:nileshA-addweb/bhardwaj-testing.git
         git remote update
