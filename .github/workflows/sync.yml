@@ -24,6 +24,8 @@ jobs:
       run: |
         git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
         git remote update
+        git config --global user.email "bhardwaj.28.m@gmail.com"
+        git config --global user.name "bhardwajmishra"
         git add .
         git commit -m "initial commit"
 
