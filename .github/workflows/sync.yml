@@ -29,7 +29,8 @@ jobs:
         echo fetch 
         git fetch --all
         echo pull
-        git pull origin main 
+        git pull origin main
+        git checkout main 
         git add .
         git commit -m "Sync changes"
         git push origin main
