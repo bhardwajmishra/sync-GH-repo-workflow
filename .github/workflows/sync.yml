@@ -1,0 +1,39 @@
+name: Sync Repositories
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Repository
+      uses: actions/checkout@v3
+
+    - name: Update code on destination repo
+      run: |
+        rm -rf .git
+        echo -----git init-----
+        git init
+        echo -----git remote add-----
+        git remote add origin https://${{secrets.GH_USER}}:${{secrets.GH_PAT}}@github.com/nileshA-addweb/bhardwaj-testing.git
+        git config --global user.email "nilesh@addwebsolution.in"
+        git config --global user.name "nileshA-addweb"
+        echo -----git remote -v-----
+        git remote -v
+        echo -----git fetch --all-----
+        git fetch --all 
+        echo -----git branch -m main-----
+        git branch -m main
+        echo -----git branch-----
+        git branch
+        echo -----git add-----
+        git add .
+        echo -----git commit-----
+        git commit -m "Sync changes"
+        echo -----git push-----
+        git push -f origin main
+
