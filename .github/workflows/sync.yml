@@ -21,11 +21,14 @@ jobs:
         git init
         ls
         git remote add origin https://github.com/nileshA-addweb/bhardwaj-testing.git
-        git config --global user.email "bhardwaj.28.m@gmail.com"
-        git config --global user.name "bhardwajmishra"
+        git config --global user.email "nilesh@addwebsolution.in"
+        git config --global user.name "nileshA-addweb"
         ls
+        echo remote
         git remote -v
+        echo fetch 
         git fetch --all
+        echo pull
         git pull origin main 
         git add .
         git commit -m "Sync changes"
