@@ -28,6 +28,8 @@ jobs:
     - name: Add Destination Repository as Remote
       run: |
         git remote add destination git@github.com:nileshA-addweb/bhardwaj-testing.git
+        git remote update
+
 
     - name: Fetch Shallow History and Push
       run: |
