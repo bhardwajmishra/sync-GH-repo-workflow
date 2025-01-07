@@ -22,12 +22,13 @@ jobs:
 
     - name: Add Destination Repository as Remote
       run: |
-        git remote remove origin
+        rm -rf .git 
+        git init
         git remote add origin git@github.com:nileshA-addweb/bhardwaj-testing.git
         git remote update
         git config --global user.email "bhardwaj.28.m@gmail.com"
         git config --global user.name "bhardwajmishra"
-        ls
+        ls -alh
         git remote -v
         git add  .
         git commit -m "initial commit"
