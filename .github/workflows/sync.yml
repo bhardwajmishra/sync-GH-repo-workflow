@@ -12,23 +12,13 @@ jobs:
     steps:
     - name: Checkout Source Repository
       uses: actions/checkout@v3
-
-    - name: Setup SSH Key
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-
     - name: Add Destination Repository as Remote
       run: |
         rm -rf .git
         git init
         git remote add origin https://github.com/nileshA-addweb/bhardwaj-testing.git
-        git remote update
         git config --global user.email "bhardwaj.28.m@gmail.com"
         git config --global user.name "bhardwajmishra"
-        ls -alh
         git remote -v
         git add  .
         git commit -m "initial commit"
