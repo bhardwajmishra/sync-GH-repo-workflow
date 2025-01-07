@@ -13,22 +13,27 @@ jobs:
     - name: Checkout Source Repository
       uses: actions/checkout@v3
 
-    - name: Add Destination Repository as Remote
+    - name: Update code on destination repo
       run: |
         rm -rf .git
+        echo -----git init-----
         git init
+        echo -----git remote-----
         git remote add origin https://${{secrets.GH_USER}}:${{secrets.GH_PAT}}@github.com/nileshA-addweb/bhardwaj-testing.git
         git config --global user.email "nilesh@addwebsolution.in"
         git config --global user.name "nileshA-addweb"
-        ls
-        echo remote
+        echo -----git remote -v-----
         git remote -v
-        echo fetch
+        echo -----git fetch --all-----
         git fetch --all 
+        echo -----git branch -m main-----
         git branch -m main
-        echo branch name
+        echo -----git branch-----
         git branch
+        echo -----git add-----
         git add .
+        echo -----git commit-----
         git commit -m "Sync changes"
+        echo -----git push-----
         git push -f origin main
 
