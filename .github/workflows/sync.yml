@@ -25,7 +25,8 @@ jobs:
         git config --global user.name "bhardwajmishra"
         ls
         git remote -v
-        git branch -m main
+        git fetch --all
+        git pull origin main 
         git add .
         git commit -m "Sync changes"
 
