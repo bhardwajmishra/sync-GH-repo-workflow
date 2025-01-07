@@ -15,11 +15,8 @@ jobs:
 
     - name: Add Destination Repository as Remote
       run: |
-        ls
         rm -rf .git
-        ls
         git init
-        ls
         git remote add origin https://${{secrets.GH_USER}}:${{secrets.GH_PAT}}@github.com/nileshA-addweb/bhardwaj-testing.git
         git config --global user.email "nilesh@addwebsolution.in"
         git config --global user.name "nileshA-addweb"
@@ -29,8 +26,8 @@ jobs:
         echo fetch 
         git fetch --all
         echo pull
-        git pull origin main
-        git checkout main 
+        git checkout main
+        git pull origin main 
         git add .
         git commit -m "Sync changes"
         git push origin main
