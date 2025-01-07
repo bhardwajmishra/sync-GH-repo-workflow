@@ -18,9 +18,9 @@ jobs:
         git config --global user.email "bhardwaj.28.m@gmail.com"
         git config --global user.name "bhardwajmishra"
         git remote -v
-        git checkout -b main
-        git add  .
-        git commit -m "initial commit"
+        git pull origin main --rebase
+        git add .
+        git commit -m "Sync changes"
 
     - name: Fetch Shallow History and Push
       run: |
