@@ -32,9 +32,5 @@ jobs:
         git pull origin main 
         git add .
         git commit -m "Sync changes"
-
-    - name: Fetch Shallow History and Push
-      run: |
         git push origin main
-
 
