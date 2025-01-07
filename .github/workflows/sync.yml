@@ -35,6 +35,6 @@ jobs:
 
     - name: Fetch Shallow History and Push
       run: |
-        git push https://${{secrets.GH_USER}}:${{secrets.GH_PAT}}@github.com/nileshA-addweb/bhardwaj-testing.git main
+        git push origin main
 
 
