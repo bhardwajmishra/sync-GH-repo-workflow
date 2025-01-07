@@ -24,7 +24,6 @@ jobs:
         echo remote
         git remote -v
         echo fetch 
-        git fetch --all
         git checkout main
         echo branch name
         git branch
