@@ -25,9 +25,8 @@ jobs:
         git remote -v
         echo fetch 
         git fetch --all
-        echo pull
-        git checkout main
-        git pull origin main 
+        echo branch name
+        git branch
         git add .
         git commit -m "Sync changes"
         git push origin main
