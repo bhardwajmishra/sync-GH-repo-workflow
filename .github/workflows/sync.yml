@@ -23,11 +23,12 @@ jobs:
         ls
         echo remote
         git remote -v
-        echo fetch 
+        echo fetch
+        git fetch --all 
         git checkout main
         echo branch name
         git branch
         git add .
         git commit -m "Sync changes"
-        git push origin main
+        git push -f origin main
 
